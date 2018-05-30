@@ -1,3 +1,20 @@
+<div class="row">
+  <div class="form-group col-md-4">
+    <label for="tweetDateRange">Tweet Start Date</label>
+    <input id ="tweetDateRange" name="tweetDateRange" type="text" bsDaterangepicker [bsConfig]="datePickerConfig" class="form-control" [(ngModel)]="tweetDateRange">
+    <!-- <input id ="tweetStartDate" name="tweetStartDate" type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control" [(ngModel)]="tweetStartDate"> -->
+  </div>
+  <!-- <div class="form-group col-md-4">
+    <label for="tweetEndDate">Tweet End Date</label>
+    <input id ="tweetEndDate" name="tweetEndDate" type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control" [(ngModel)]="tweetEndDate">
+    <input id ="tweetEndDate" name="tweetEndDate" type="text" bsDatepicker [bsConfig]="datePickerConfig" class="form-control" [(ngModel)]="tweetEndDate">
+    <input id ="dateOfBirth" name="dateOfBirth" type="text" bsDaterangepicker class="form-control">
+  </div> -->
+  <div class="panel-footer col-md-4">
+       <button class="btn btn-primary" style="margin-top: 30px;" type="submit" (click)="getAllTweets()" >Get All Tweets</button>
+  </div>
+</div>
+
 <nb-card>
   <nb-card-header>
     Twitter Data
@@ -30,6 +47,8 @@
     </ng2-smart-table>
   </nb-card-body>
 </nb-card>
+
+
 
 
 

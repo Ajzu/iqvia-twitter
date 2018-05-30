@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from '../../../@core/data/smart-table.service';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+
 
 @Component({
   selector: 'ngx-smart-table',
@@ -13,6 +15,12 @@ import { SmartTableService } from '../../../@core/data/smart-table.service';
 })
 export class SmartTableComponent {
 
+  tweetStartDate : Date = new Date(2016,0,1);
+  tweetEndDate : Date = new Date(2017,11,31);
+  tweetDateRange : Date[];
+
+  //Addon for date picker
+  datePickerConfig : Partial<BsDatepickerConfig>;
   //Addon for twitter data
   settings = {
     add: {
@@ -50,18 +58,15 @@ export class SmartTableComponent {
   reTweetedSource: LocalDataSource = new LocalDataSource();
 
   constructor(private service: SmartTableService) {
-    this.getAllTweets();
-    //const twitterData = this.service.getTwitterTweets ('GetAllUser')
-    //const twitterData =  this.service.getTwitterData();
-    // this.service.filterTweetsData();
-    // const originalTweetedData = this.service.getOriginalTweetedData();
-    // const reTweetedData = this.service.getReTweetedData();
+    //this.getAllTweets();
+    this.datePickerConfig = Object.assign({},
+      {
+        minDate: new Date(2016,0,1),
+        maxDate: new Date(2017, 11, 31)
+      });
 
-    // this.twitterSource.load(twitterData);
-    // this.originalTweetedSource.load(originalTweetedData);
-    // this.reTweetedSource.load(reTweetedData);
-    
-  }
+    this.tweetDateRange=[this.tweetStartDate, this.tweetEndDate];
+    }
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
@@ -72,7 +77,9 @@ export class SmartTableComponent {
   }
 
   getAllTweets() {
-    this.service.getTwitterTweets ('GetAllUser')
+    this.tweetStartDate = this.tweetDateRange[0];
+    this.tweetEndDate = this.tweetDateRange[1];
+    this.service.getTwitterTweets (this.tweetStartDate, this.tweetEndDate)
     .subscribe(
       (res : any) => {
         const twitterData = res;

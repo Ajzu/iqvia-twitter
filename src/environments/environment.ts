@@ -10,5 +10,6 @@
 
 export const environment = {
   production: false,
-  twitterBaseUrl: 'https://badapi.iqvia.io/api/v1/Tweets?startDate=2016-03-20T04%3A07%3A56.271Z&endDate=2018-03-20T04%3A07%3A56.271Z',
+  twitterBaseUrl: 'https://badapi.iqvia.io/api/v1/Tweets',
+  // twitterBaseUrl: 'https://badapi.iqvia.io/api/v1/Tweets?startDate=2016-03-20T04%3A07%3A56.271Z&endDate=2018-03-20T04%3A07%3A56.271Z',
 };

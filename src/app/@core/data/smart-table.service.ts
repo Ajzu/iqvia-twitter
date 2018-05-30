@@ -40,11 +40,6 @@ export class SmartTableService {
     uniquelyTweetedData=[];
     reTweetedData=[];
 
-  // getTwitterData(){
-  //     console.log("Original Twitter Data", this.twitterData);
-  //     return this.twitterData;
-  // }
-
   getUniquelyTweetedData(){
       return this.uniquelyTweetedData;
   }
@@ -85,8 +80,11 @@ export class SmartTableService {
       }
   }
 
-  getTwitterTweets( tableName : string ) : Observable< Response >{
-    let url = this.twitterBaseUrl;
+  getTwitterTweets( tweetStartDate : Date, tweetEndDate : Date) : Observable< Response >{
+    let startDate = this.changeDateTimeFormat(tweetStartDate);
+    let endDate = this.changeDateTimeFormat(tweetEndDate);
+    let queryString = "?startDate="+ startDate +"&endDate="+ endDate;
+    let url = this.twitterBaseUrl + queryString;
 
     return this
     .http
@@ -96,5 +94,12 @@ export class SmartTableService {
         this.twitterData = res.json();
         return res.json();
     })
+  }
+
+  changeDateTimeFormat(unformattedDate : Date) : string {
+    let formattedDateTime = unformattedDate.getUTCFullYear() + 
+    "-" + (unformattedDate.getUTCMonth()+1) + 
+    "-" + unformattedDate.getUTCDate() + "T04%3A07%3A56.271Z";
+    return formattedDateTime;
   }
 }
