@@ -12,6 +12,12 @@ const routes: Routes = [{
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule',
   }, {
+    path: 'tablets',
+    loadChildren: './tables/tables.module#TablesModule',
+  }, {
+    path: 'charts',
+    loadChildren: './charts/charts.module#ChartsModule',
+  }, {
     path: '',
     redirectTo: 'tables/smart-table',
     pathMatch: 'full',

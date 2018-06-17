@@ -7,4 +7,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/tables/smart-table',
     home: true,
   },
+  {
+    title: 'Custom Dashboard',
+    icon: 'nb-tables',
+    link: '/pages/tables/smart-table',
+  },
+  {
+    title: 'Echarts',
+    icon: 'nb-bar-chart',
+    link: '/pages/charts/echarts',
+  },
 ];
