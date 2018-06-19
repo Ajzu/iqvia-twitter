@@ -9,6 +9,9 @@ const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [{
+    path: 'users',
+    loadChildren: './users/userscharts.module#UsersChartsModule',
+  }, {
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule',
   }, {

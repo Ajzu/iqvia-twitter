@@ -17,4 +17,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-bar-chart',
     link: '/pages/charts/echarts',
   },
+  {
+    title: 'Users',
+    icon: 'nb-bar-chart',
+    link: '/pages/users/usersecharts',
+  },
 ];
