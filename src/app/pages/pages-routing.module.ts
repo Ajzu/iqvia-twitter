@@ -12,6 +12,9 @@ const routes: Routes = [{
     path: 'users',
     loadChildren: './users/userscharts.module#UsersChartsModule',
   }, {
+    path: 'profile',
+    loadChildren: './profile/profile.module#ProfileModule',
+  }, {
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule',
   }, {
