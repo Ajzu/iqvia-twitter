@@ -9,6 +9,9 @@ const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [{
+    path: 'cricketplayers',
+    loadChildren: './cricketplayers/cricketplayerscharts.module#CricketPlayersChartsModule',
+  },{
     path: 'users',
     loadChildren: './users/userscharts.module#UsersChartsModule',
   }, {

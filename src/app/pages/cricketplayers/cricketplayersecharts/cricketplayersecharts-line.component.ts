@@ -2,12 +2,12 @@ import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
-  selector: 'ngx-usersecharts-bar',
+  selector: 'ngx-cricketplayersecharts-line',
   template: `
     <div echarts [options]="options" class="echart"></div>
   `,
 })
-export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
+export class CricketPlayersEchartsLineComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
 
@@ -22,23 +22,22 @@ export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
 
       this.options = {
         backgroundColor: echarts.bg,
-        color: [colors.primaryLight],
+        color: [colors.danger, colors.primary, colors.info],
         tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow',
-          },
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c}',
         },
-        grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true,
+        legend: {
+          left: 'left',
+          data: ['Line 1', 'Line 2', 'Line 3'],
+          textStyle: {
+            color: echarts.textColor,
+          },
         },
         xAxis: [
           {
             type: 'category',
-            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            data: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
             axisTick: {
               alignWithLabel: true,
             },
@@ -56,7 +55,7 @@ export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
         ],
         yAxis: [
           {
-            type: 'value',
+            type: 'log',
             axisLine: {
               lineStyle: {
                 color: echarts.axisLineColor,
@@ -74,12 +73,27 @@ export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
             },
           },
         ],
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true,
+        },
         series: [
           {
-            name: 'Score',
-            type: 'bar',
-            barWidth: '60%',
-            data: [5904, 0, 0, 500, 4308, 750, 750, 750, 1454, 5422, 5422, 5422],
+            name: 'Line 1',
+            type: 'line',
+            data: [1, 3, 9, 27, 81, 247, 741, 2223, 6669],
+          },
+          {
+            name: 'Line 2',
+            type: 'line',
+            data: [1, 2, 4, 8, 16, 32, 64, 128, 256],
+          },
+          {
+            name: 'Line 3',
+            type: 'line',
+            data: [1 / 2, 1 / 4, 1 / 8, 1 / 16, 1 / 32, 1 / 64, 1 / 128, 1 / 256, 1 / 512],
           },
         ],
       };

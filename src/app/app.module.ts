@@ -14,9 +14,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListEmployeesComponent } from './pages/employees/common/list-employees.component';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ListEmployeesComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

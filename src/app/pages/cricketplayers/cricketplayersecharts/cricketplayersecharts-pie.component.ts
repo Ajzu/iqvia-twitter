@@ -2,12 +2,12 @@ import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
-  selector: 'ngx-usersecharts-pie',
+  selector: 'ngx-cricketplayersecharts-pie',
   template: `
     <div echarts [options]="options" class="echart"></div>
   `,
 })
-export class UsersEchartsPieComponent implements AfterViewInit, OnDestroy {
+export class CricketPlayersEchartsPieComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
 
@@ -22,8 +22,8 @@ export class UsersEchartsPieComponent implements AfterViewInit, OnDestroy {
 
       this.options = {
         backgroundColor: echarts.bg,
-        color: [colors.warningLight, colors.infoLight, colors.dangerLight,
-        colors.successLight, colors.primaryLight, colors.dangerLight],
+        color: [colors.successLight, colors.warningLight, colors.infoLight, colors.dangerLight,
+        colors.primaryLight, colors.dangerLight, colors.warningLight],
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)',
@@ -31,29 +31,25 @@ export class UsersEchartsPieComponent implements AfterViewInit, OnDestroy {
         legend: {
           orient: 'vertical',
           left: 'left',
-          data: ['Home Loan', 'Car Loan', 'Communications', 'Electricity', 'Water', 'Fuel','Savings', 'Investments','Grocery etc', 'Others', 'Medicine'],
+          data: ['Not Out', 'Bold', 'Catch', 'Stumping', 'Run-Out', 'Hit-Wicket', 'Obstruction'],
           textStyle: {
             color: echarts.textColor,
           },
         },
         series: [
           {
-            name: 'Expenses',
+            name: 'Out Type',
             type: 'pie',
             radius: '80%',
             center: ['50%', '50%'],
             data: [
-              { value: 50000, name: 'Home Loan' },
-              { value: 12000, name: 'Car Loan' },
-              { value: 600, name: 'Communications' },
-              { value: 1000, name: 'Electricity' },
-              { value: 800, name: 'Water' },
-              { value: 4000, name: 'Fuel' },
-              { value: 15000, name: 'Savings' },
-              { value: 10000, name: 'Investments' },
-              { value: 6000, name: 'Grocery etc' },
-              { value: 4000, name: 'Others' },
-              { value: 500, name: 'Medicine' },
+              { value: 105, name: 'Not Out' },
+              { value: 100, name: 'Bold' },
+              { value: 150, name: 'Catch' },
+              { value: 90, name: 'Stumping' },
+              { value: 38, name: 'Run-Out' },
+              { value: 14, name: 'Hit-Wicket' },
+              { value: 7, name: 'Obstruction' },
             ],
             itemStyle: {
               emphasis: {

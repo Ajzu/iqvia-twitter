@@ -2,12 +2,12 @@ import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
-  selector: 'ngx-usersecharts-bar',
+  selector: 'ngx-cricketplayersecharts-bar',
   template: `
     <div echarts [options]="options" class="echart"></div>
   `,
 })
-export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
+export class CricketPlayersEchartsBarComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
 
@@ -38,7 +38,7 @@ export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
         xAxis: [
           {
             type: 'category',
-            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            data: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021'],
             axisTick: {
               alignWithLabel: true,
             },
@@ -76,10 +76,10 @@ export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
         ],
         series: [
           {
-            name: 'Score',
+            name: 'Annual Run Aggregate',
             type: 'bar',
             barWidth: '60%',
-            data: [5904, 0, 0, 500, 4308, 750, 750, 750, 1454, 5422, 5422, 5422],
+            data: [200, 678, 1800, 1100, 1008, 1250, 750, 650, 954, 822, 1422, 1922],
           },
         ],
       };

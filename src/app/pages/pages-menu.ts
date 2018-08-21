@@ -22,4 +22,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-bar-chart',
     link: '/pages/users/usersecharts',
   },
+  {
+    title: 'Cricket Players',
+    icon: 'nb-bar-chart',
+    link: '/pages/cricketplayers/cricketplayersecharts',
+  },
 ];

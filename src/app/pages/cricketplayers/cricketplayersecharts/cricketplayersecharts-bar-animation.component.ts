@@ -2,12 +2,12 @@ import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
-  selector: 'ngx-usersecharts-bar',
+  selector: 'ngx-cricketplayersecharts-bar-animation',
   template: `
     <div echarts [options]="options" class="echart"></div>
   `,
 })
-export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
+export class CricketPlayersEchartsBarAnimationComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
 
@@ -16,29 +16,27 @@ export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+      const xAxisData = [];
+      const data1 = [];
+      const data2 = [];
 
       const colors: any = config.variables;
       const echarts: any = config.variables.echarts;
 
       this.options = {
         backgroundColor: echarts.bg,
-        color: [colors.primaryLight],
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow',
+        color: [colors.primaryLight, colors.infoLight],
+        legend: {
+          data: ['bar Old', 'bar2 New'],
+          align: 'left',
+          textStyle: {
+            color: echarts.textColor,
           },
-        },
-        grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true,
         },
         xAxis: [
           {
-            type: 'category',
-            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            data: xAxisData,
+            silent: false,
             axisTick: {
               alignWithLabel: true,
             },
@@ -56,7 +54,6 @@ export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
         ],
         yAxis: [
           {
-            type: 'value',
             axisLine: {
               lineStyle: {
                 color: echarts.axisLineColor,
@@ -76,13 +73,33 @@ export class UsersEchartsBarComponent implements AfterViewInit, OnDestroy {
         ],
         series: [
           {
-            name: 'Score',
+            name: 'bar Old',
             type: 'bar',
-            barWidth: '60%',
-            data: [5904, 0, 0, 500, 4308, 750, 750, 750, 1454, 5422, 5422, 5422],
+            data: data1,
+            animationDelay: function(idx) {
+              return idx * 10;
+            },
+          },
+          {
+            name: 'bar2 New',
+            type: 'bar',
+            data: data2,
+            animationDelay: function(idx) {
+              return idx * 10 + 100;
+            },
           },
         ],
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: function(idx) {
+          return idx * 5;
+        },
       };
+
+      for (let i = 0; i < 100; i++) {
+        xAxisData.push('Category ' + i);
+        data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
+        data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
+      }
     });
   }
 

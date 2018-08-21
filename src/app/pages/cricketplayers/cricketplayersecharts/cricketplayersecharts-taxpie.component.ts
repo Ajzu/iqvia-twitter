@@ -2,12 +2,12 @@ import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
-  selector: 'ngx-usersecharts-pie',
+  selector: 'ngx-cricketplayersecharts-taxpie',
   template: `
     <div echarts [options]="options" class="echart"></div>
   `,
 })
-export class UsersEchartsPieComponent implements AfterViewInit, OnDestroy {
+export class CricketPlayersEchartsTaxPieComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
 
@@ -31,29 +31,20 @@ export class UsersEchartsPieComponent implements AfterViewInit, OnDestroy {
         legend: {
           orient: 'vertical',
           left: 'left',
-          data: ['Home Loan', 'Car Loan', 'Communications', 'Electricity', 'Water', 'Fuel','Savings', 'Investments','Grocery etc', 'Others', 'Medicine'],
+          data: ['Taxable Income', 'Exemptions'],
           textStyle: {
             color: echarts.textColor,
           },
         },
         series: [
           {
-            name: 'Expenses',
+            name: 'Countries',
             type: 'pie',
             radius: '80%',
             center: ['50%', '50%'],
             data: [
-              { value: 50000, name: 'Home Loan' },
-              { value: 12000, name: 'Car Loan' },
-              { value: 600, name: 'Communications' },
-              { value: 1000, name: 'Electricity' },
-              { value: 800, name: 'Water' },
-              { value: 4000, name: 'Fuel' },
-              { value: 15000, name: 'Savings' },
-              { value: 10000, name: 'Investments' },
-              { value: 6000, name: 'Grocery etc' },
-              { value: 4000, name: 'Others' },
-              { value: 500, name: 'Medicine' },
+              { value: 80000, name: 'Taxable Income' },
+              { value: 20000, name: 'Exemptions' },
             ],
             itemStyle: {
               emphasis: {

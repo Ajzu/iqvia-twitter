@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="form-group col-md-4">
+    <label for="tweetDateRange">Tweet Date Range</label>
+    <input id ="tweetDateRange" name="tweetDateRange" type="text" bsDaterangepicker [bsConfig]="datePickerConfig" class="form-control" [(ngModel)]="tweetDateRange">
+  </div>
+  <div class="panel-footer col-md-4">
+       <button class="btn btn-primary" style="margin-top: 30px;" type="submit" (click)="getAllTweets()" >Get All Tweets</button>
+  </div>
+</div>
+
+<nb-card>
+  <nb-card-header>
+    Twitter Data
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="twitterSource" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header>
+    Uniquely Tweeted Data
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="uniquelyTweetedSource" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header>
+    Retweeted/Duplicate Data
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="reTweetedSource" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+
+
+
+
