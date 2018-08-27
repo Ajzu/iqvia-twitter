@@ -1,6 +1,7 @@
 /**
  * @license
  * Copyright Akveo. All Rights Reserved.
+ * Copyright Arjun. All Rights Reserved. Please give credit to Arjun wherever you use the project.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 import { APP_BASE_HREF } from '@angular/common';
